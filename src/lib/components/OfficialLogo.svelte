@@ -12,8 +12,24 @@
 </script>
 
 <span class:inverse class={`official-logo ${className}`} aria-hidden="true">
-	<img class="logo-black" src={blackLogo} alt="" />
-	<img class="logo-white" src={whiteLogo} alt="" />
+	<img
+		class="logo-black"
+		src={blackLogo}
+		alt=""
+		fetchpriority={inverse ? undefined : 'high'}
+		decoding="async"
+		width="1774"
+		height="887"
+	/>
+	<img
+		class="logo-white"
+		src={whiteLogo}
+		alt=""
+		loading="lazy"
+		decoding="async"
+		width="1774"
+		height="887"
+	/>
 </span>
 
 <style>

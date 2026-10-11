@@ -18,15 +18,7 @@
 		</div>
 
 		<div class="hero-art" use:scrollDrift>
-			<div
-				use:reveal={{
-					delay: motionConfig.hero.artDelay,
-					duration: motionConfig.hero.artDuration,
-					scale: motionConfig.hero.artScale
-				}}
-			>
-				<InfinitySculpture />
-			</div>
+			<InfinitySculpture />
 		</div>
 	</div>
 </section>
