@@ -1,18 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-<<<<<<< HEAD
-	import favicon from '#lib/assets/favicon.svg';
-	import type { LayoutProps } from './$types';
-
-	let { children }: LayoutProps = $props();
-</script>
-
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
-
-{@render children()}
-=======
 	import blackLogo from '#lib/assets/multinity.black.svg';
 	import whiteLogo from '#lib/assets/multinity.white.svg';
 	import type { LayoutProps } from './$types';
@@ -127,4 +114,3 @@
 	<SiteHeader {theme} onToggle={toggleTheme} />
 	{@render children()}
 </div>
->>>>>>> dev

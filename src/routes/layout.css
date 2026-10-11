@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-<<<<<<< HEAD
-=======
 
 :root {
 	--page-gutter: clamp(16px, 3vw, 32px);
@@ -290,4 +288,3 @@ html.theme-changing .theme-icon {
 		scale: none;
 	}
 }
->>>>>>> dev

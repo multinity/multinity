@@ -1,8 +1,6 @@
 import { defineEnvVars } from '@sveltejs/kit/env';
 
 export const variables = defineEnvVars({
-<<<<<<< HEAD
-=======
 	PUBLIC_SITE_URL: {
 		public: true,
 		static: true,
@@ -17,6 +15,5 @@ export const variables = defineEnvVars({
 			}
 		}
 	},
->>>>>>> dev
 	DATABASE_URL: { description: 'The database connection string.' }
 });
