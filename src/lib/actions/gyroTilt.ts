@@ -14,10 +14,17 @@ export function gyroTilt(node: HTMLElement, options: GyroTiltOptions) {
 	let baselineBeta: number | null = null;
 	let baselineGamma: number | null = null;
 	let gyroCleanup: (() => void) | null = null;
+	let resizeObserver: ResizeObserver | null = null;
+	let pointerFrame = 0;
+	let pendingPointer: [number, number] | null = null;
+	let bounds = node.getBoundingClientRect();
 	let smoothX = 0;
 	let smoothY = 0;
 	const GYRO_ALPHA = 0.08;
 	const GYRO_RANGE = 55;
+	const updateBounds = () => {
+		bounds = node.getBoundingClientRect();
+	};
 
 	function isEnabled() {
 		if (motion.matches || document.hidden) return false;
@@ -26,15 +33,25 @@ export function gyroTilt(node: HTMLElement, options: GyroTiltOptions) {
 
 	function handleGlobalMove(e: PointerEvent) {
 		if (e.pointerType === 'touch' || !isEnabled()) return;
-		const bounds = node.getBoundingClientRect();
 		const centerX = bounds.left + bounds.width / 2;
 		const centerY = bounds.top + bounds.height / 2;
 		const x = Math.max(-1, Math.min(1, (e.clientX - centerX) / (window.innerWidth / 2)));
 		const y = Math.max(-1, Math.min(1, (e.clientY - centerY) / (window.innerHeight / 2)));
-		options.onTilt(x, y);
+		pendingPointer = [x, y];
+		if (!pointerFrame) pointerFrame = requestAnimationFrame(applyPointer);
+	}
+
+	function applyPointer() {
+		pointerFrame = 0;
+		if (!pendingPointer || !isEnabled()) return;
+		options.onTilt(...pendingPointer);
+		pendingPointer = null;
 	}
 
 	function handleGlobalLeave() {
+		pendingPointer = null;
+		cancelAnimationFrame(pointerFrame);
+		pointerFrame = 0;
 		options.onReset?.();
 	}
 
@@ -108,9 +125,11 @@ export function gyroTilt(node: HTMLElement, options: GyroTiltOptions) {
 
 			if ('permissions' in navigator) {
 				try {
-					const status = await (navigator.permissions as unknown as {
-						query: (d: { name: string }) => Promise<{ state: string }>;
-					}).query({ name: 'gyroscope' });
+					const status = await (
+						navigator.permissions as unknown as {
+							query: (d: { name: string }) => Promise<{ state: string }>;
+						}
+					).query({ name: 'gyroscope' });
 					if (status.state === 'denied') return;
 				} catch {
 					// Proceed anyway if permission name is not recognized
@@ -131,6 +150,13 @@ export function gyroTilt(node: HTMLElement, options: GyroTiltOptions) {
 	document.addEventListener('pointermove', handleGlobalMove);
 	document.addEventListener('pointerleave', handleGlobalLeave);
 	document.addEventListener('visibilitychange', handleVisibility);
+	window.addEventListener('scroll', updateBounds, { passive: true });
+	if ('ResizeObserver' in window) {
+		resizeObserver = new ResizeObserver(() => {
+			updateBounds();
+		});
+		resizeObserver.observe(node);
+	}
 
 	const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
 	if (isCoarsePointer && 'DeviceOrientationEvent' in window) {
@@ -146,9 +172,12 @@ export function gyroTilt(node: HTMLElement, options: GyroTiltOptions) {
 			baselineGamma = null;
 		},
 		destroy() {
+			cancelAnimationFrame(pointerFrame);
+			resizeObserver?.disconnect();
 			document.removeEventListener('pointermove', handleGlobalMove);
 			document.removeEventListener('pointerleave', handleGlobalLeave);
 			document.removeEventListener('visibilitychange', handleVisibility);
+			window.removeEventListener('scroll', updateBounds);
 			gyroCleanup?.();
 		}
 	};

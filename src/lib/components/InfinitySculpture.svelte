@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import logoMask from '#lib/assets/multinity.black.svg';
+	import logoMask from '#lib/assets/multinity.black.webp';
 	import { motionConfig } from '#lib/config/motion.js';
 	import OfficialLogo from './OfficialLogo.svelte';
 	import { siteConfig } from '#lib/config/site.js';

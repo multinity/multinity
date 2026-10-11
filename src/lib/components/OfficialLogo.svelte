@@ -1,6 +1,6 @@
 <script lang="ts">
-	import blackLogo from '#lib/assets/multinity.black.svg';
-	import whiteLogo from '#lib/assets/multinity.white.svg';
+	import blackLogo from '#lib/assets/multinity.black.webp';
+	import whiteLogo from '#lib/assets/multinity.white.webp';
 
 	let {
 		inverse = false,
@@ -18,8 +18,8 @@
 		alt=""
 		fetchpriority={inverse ? undefined : 'high'}
 		decoding="async"
-		width="1774"
-		height="887"
+		width="1400"
+		height="700"
 	/>
 	<img
 		class="logo-white"
@@ -27,8 +27,8 @@
 		alt=""
 		loading="lazy"
 		decoding="async"
-		width="1774"
-		height="887"
+		width="1400"
+		height="700"
 	/>
 </span>
 

@@ -101,6 +101,17 @@ export const siteConfig = {
 			transferLabel: 'Encrypted',
 			message: 'Text copied to your device',
 			confirmation: '✓'
+		},
+		wallet: {
+			period: 'This month',
+			menuLabel: 'Overview',
+			balanceLabel: 'Available balance',
+			balance: '₹24,680',
+			change: '+12.4% this month',
+			chart: [42, 58, 36, 68, 52, 76, 64],
+			dateLabel: 'Today',
+			transactionLabel: 'Multinity Wallet',
+			amount: '₹1,240'
 		}
 	},
 	footer: {

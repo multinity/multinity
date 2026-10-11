@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import blackLogo from '#lib/assets/multinity.black.svg';
+	import blackLogo from '#lib/assets/multinity.black.webp';
 	import type { LayoutProps } from './$types';
 	import { onMount, tick } from 'svelte';
 	import { transitionTheme } from '#lib/actions/themeTransition.js';
@@ -83,7 +83,7 @@
 <svelte:head>
 	<link rel="icon" href="/favicon.ico" sizes="any" />
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-	<link rel="preload" as="image" href={blackLogo} type="image/svg+xml" fetchpriority="high" />
+	<link rel="preload" as="image" href={blackLogo} type="image/webp" fetchpriority="high" />
 	<title>{siteConfig.metadata.title}</title>
 	<meta name="description" content={siteConfig.metadata.description} />
 	<!-- Two theme-color tags let the browser tab bar match instantly, before JS runs.

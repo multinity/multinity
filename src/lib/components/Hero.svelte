@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { reveal } from '#lib/actions/reveal.js';
 	import { scrollDrift } from '#lib/actions/scrollDrift.js';
-	import { motionConfig } from '#lib/config/motion.js';
 	import InfinitySculpture from './InfinitySculpture.svelte';
 	import { siteConfig } from '#lib/config/site.js';
 </script>
@@ -10,10 +8,8 @@
 	<div class="hero-inner site-container">
 		<div class="hero-title">
 			<h1>
-				<span use:reveal={{ delay: motionConfig.hero.titleDelay }}>{siteConfig.hero.title}</span>
-				<em use:reveal={{ delay: motionConfig.hero.titleDelay + motionConfig.stagger }}
-					>{siteConfig.hero.emphasis}</em
-				>
+				<span>{siteConfig.hero.title}</span>
+				<em>{siteConfig.hero.emphasis}</em>
 			</h1>
 		</div>
 

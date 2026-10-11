@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { siteConfig } from '#lib/config/site.js';
+	import { routes, siteConfig } from '#lib/config/site.js';
 
 	let open = $state(false);
 	let buttonEl: HTMLButtonElement;
@@ -32,7 +32,6 @@
 
 <!-- Click-outside overlay -->
 {#if open}
-	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div class="overlay" onclick={close} aria-hidden="true"></div>
 {/if}
 
@@ -49,24 +48,19 @@
 		aria-haspopup="menu"
 	>
 		<span class="dots-grid" aria-hidden="true">
-			{#each Array(9) as _, i (i)}
+			{#each Array.from({ length: 9 }, (_, i) => i) as i (i)}
 				<span class="dot" style="--i: {i}"></span>
 			{/each}
 		</span>
 	</button>
 
 	{#if open}
-		<div
-			class="app-panel"
-			role="menu"
-			aria-label="Products"
-			aria-labelledby="app-grid-button"
-		>
+		<div class="app-panel" role="menu" aria-label="Products" aria-labelledby="app-grid-button">
 			<p class="panel-heading">Products</p>
 			<ul class="product-list">
 				{#each products as product (product.key)}
-					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					<li role="none">
+						<!-- eslint-disable svelte/no-navigation-without-resolve -->
 						<a
 							href={product.href}
 							class="product-item control-feedback"
@@ -83,12 +77,14 @@
 							</span>
 							<span class="product-arrow" aria-hidden="true">↗</span>
 						</a>
+						<!-- eslint-enable svelte/no-navigation-without-resolve -->
 					</li>
 				{/each}
 
 				<li role="none">
+					<!-- eslint-disable svelte/no-navigation-without-resolve -->
 					<a
-						href={siteConfig.navigation.items[0].href}
+						href={routes.portfolio}
 						class="product-item product-item--all control-feedback"
 						role="menuitem"
 						onclick={close}
@@ -100,6 +96,7 @@
 						</span>
 						<span class="product-arrow" aria-hidden="true">↗</span>
 					</a>
+					<!-- eslint-enable svelte/no-navigation-without-resolve -->
 				</li>
 			</ul>
 		</div>
