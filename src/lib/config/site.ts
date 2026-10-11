@@ -3,9 +3,6 @@ import { PUBLIC_SITE_URL } from '$app/env/public';
 const paths = {
 	home: '/',
 	top: '#top',
-	portfolio: '#portfolio',
-	copydrop: '/copydrop',
-	wallet: '/wallet',
 	about: '/about',
 	contact: '/contact',
 	careers: '/careers',
@@ -23,9 +20,6 @@ function siteHref(path: string) {
 export const routes = {
 	home: siteHref(paths.home),
 	top: paths.top,
-	portfolio: paths.portfolio,
-	copydrop: siteHref(paths.copydrop),
-	wallet: siteHref(paths.wallet),
 	about: siteHref(paths.about),
 	contact: siteHref(paths.contact),
 	careers: siteHref(paths.careers),
@@ -43,11 +37,11 @@ export const siteConfig = {
 	anchors: {
 		top: 'top',
 		main: 'main-content',
-		portfolio: 'portfolio'
+		services: 'services'
 	},
 	metadata: {
 		title: 'Multinity — Building the Ecosystem',
-		description: 'Precision-engineered applications built to simplify and secure your digital life.'
+		description: 'Technology services for search, automation, data, security, and the open web.'
 	},
 	brand: {
 		homeHref: paths.home,
@@ -72,52 +66,48 @@ export const siteConfig = {
 			durationSeconds: 9
 		}
 	},
-	portfolio: {
-		section: { number: '02', label: 'Portfolio' },
-		title: 'Tools built for',
-		titleLineTwo: 'the modern web.',
-		description: 'Focused software, engineered to disappear into the task.',
-		products: [
-			{
-				key: 'copydrop',
-				number: '01',
-				name: 'CopyDrop',
-				description:
-					'Instant P2P text sharing. Transfer snippets across devices securely via encrypted WebSockets.',
-				href: routes.copydrop,
-				type: 'copydrop' as const,
-				statusLabel: 'Production ready',
-				actionLabel: 'Open app'
-			}
-		]
-	},
-	productVisuals: {
-		copydrop: {
-			channelLabel: 'copydrop / secure channel',
-			devices: [
-				{ number: '01', name: 'MacBook', status: 'Connected' },
-				{ number: '02', name: 'Phone', status: 'Connected' }
-			],
-			transferLabel: 'Encrypted',
-			message: 'Text copied to your device',
-			confirmation: '✓'
+	services: [
+		{
+			number: '01',
+			name: 'Search & discovery',
+			description:
+				'Help people find the right information faster with focused search, useful filters, and clear results.'
 		},
-		wallet: {
-			period: 'This month',
-			menuLabel: 'Overview',
-			balanceLabel: 'Available balance',
-			balance: '₹24,680',
-			change: '+12.4% this month',
-			chart: [42, 58, 36, 68, 52, 76, 64],
-			dateLabel: 'Today',
-			transactionLabel: 'Multinity Wallet',
-			amount: '₹1,240'
+		{
+			number: '02',
+			name: 'Web platforms',
+			description:
+				'Design and build responsive digital experiences that make complex workflows feel simple.'
+		},
+		{
+			number: '03',
+			name: 'AI & automation',
+			description:
+				'Turn repetitive work into dependable systems with practical AI, thoughtful interfaces, and human control.'
+		},
+		{
+			number: '04',
+			name: 'Data & analytics',
+			description:
+				'Bring scattered signals together in dashboards and tools that make the next decision clearer.'
+		},
+		{
+			number: '05',
+			name: 'Cloud foundations',
+			description:
+				'Create secure, observable infrastructure that stays reliable as your products and audience grow.'
+		},
+		{
+			number: '06',
+			name: 'Privacy & security',
+			description:
+				'Protect accounts, data, and everyday interactions with privacy-minded architecture from the start.'
 		}
-	},
+	],
 	footer: {
 		title: 'Built with intent.',
 		titleLineTwo: 'Made to last.',
-		subscribeDescription: 'Occasional notes on products, privacy, and the web we want to build.',
+		subscribeDescription: 'Occasional notes on privacy and the web we want to build.',
 		subscribeLabel: 'Subscribe to updates',
 		emailPlaceholder: 'Email address',
 		submitLabel: 'Subscribe',
