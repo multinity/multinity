@@ -36,12 +36,11 @@ export const siteConfig = {
 	locale: 'English (US)',
 	anchors: {
 		top: 'top',
-		main: 'main-content',
-		services: 'services'
+		main: 'main-content'
 	},
 	metadata: {
 		title: 'Multinity — Building the Ecosystem',
-		description: 'Technology services for search, automation, data, security, and the open web.'
+		description: 'Multinity builds clear, reliable experiences for the modern web.'
 	},
 	brand: {
 		homeHref: paths.home,
@@ -66,44 +65,6 @@ export const siteConfig = {
 			durationSeconds: 9
 		}
 	},
-	services: [
-		{
-			number: '01',
-			name: 'Search & discovery',
-			description:
-				'Help people find the right information faster with focused search, useful filters, and clear results.'
-		},
-		{
-			number: '02',
-			name: 'Web platforms',
-			description:
-				'Design and build responsive digital experiences that make complex workflows feel simple.'
-		},
-		{
-			number: '03',
-			name: 'AI & automation',
-			description:
-				'Turn repetitive work into dependable systems with practical AI, thoughtful interfaces, and human control.'
-		},
-		{
-			number: '04',
-			name: 'Data & analytics',
-			description:
-				'Bring scattered signals together in dashboards and tools that make the next decision clearer.'
-		},
-		{
-			number: '05',
-			name: 'Cloud foundations',
-			description:
-				'Create secure, observable infrastructure that stays reliable as your products and audience grow.'
-		},
-		{
-			number: '06',
-			name: 'Privacy & security',
-			description:
-				'Protect accounts, data, and everyday interactions with privacy-minded architecture from the start.'
-		}
-	],
 	footer: {
 		title: 'Built with intent.',
 		titleLineTwo: 'Made to last.',
