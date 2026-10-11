@@ -15,5 +15,8 @@ export const variables = defineEnvVars({
 			}
 		}
 	},
-	DATABASE_URL: { description: 'The database connection string.' }
+	DATABASE_URL: {
+		description: 'The database connection string.',
+		schema: (value) => value || undefined
+	}
 });
